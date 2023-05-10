@@ -70,7 +70,7 @@
   padding: 16px;
   height: 300px;
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   margin: 16px;
 }
 
@@ -114,7 +114,7 @@
 
 @media (min-width: 768px) {
   .product-card {
-    max-width: 250px;
+    max-width: 270px;
     height: 400px;
     margin: 16px;
   }
@@ -122,7 +122,7 @@
 
 @media (min-width: 1024px) {
   .product-card {
-    max-width: 200px;
+    max-width: 290px;
     height: 400px;
     margin: 16px;
   }
@@ -130,7 +130,7 @@
 
 @media (min-width: 1280px) {
   .product-card {
-    max-width: 200px;
+    max-width: 310px;
     height: 500px;
     margin: 16px;
   }

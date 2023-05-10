@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Produtos esportivos</h1>
+    <h1>Catálogo</h1>
+	<br>
     <div class="product-list">
       <product-card v-for="produto in produtos" :key="produto.id" :produto="produto" />
     </div>
