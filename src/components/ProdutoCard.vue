@@ -1,5 +1,5 @@
 <template>
-    <div class="product-card">
+    <div class="product-card" style="align-items: center; justify-content: center;">
       <div class="product-card__image">
         <img :src="produto.image" alt="Imagem do produto">
       </div>
@@ -71,7 +71,7 @@
   height: 300px;
   width: 100%;
   max-width: 400px;
-  margin: 16px;
+  margin: 20px 0px;
 }
 
 .product-card__image {
@@ -134,7 +134,7 @@
     height: 500px;
     margin: 16px;
   }
-}
+} 
 
   </style>
   
