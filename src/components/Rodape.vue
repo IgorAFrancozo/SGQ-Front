@@ -9,10 +9,10 @@
   <style>
   .footer {
     background-color: #0065fd;
-    padding: 20px 0;
+    padding: 40px 0;
     text-align: center;
     width: 100%;
-    
+    color: white;
   }
   </style>
   
