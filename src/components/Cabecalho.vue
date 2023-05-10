@@ -9,16 +9,15 @@ import { RouterLink } from "vue-router";
         <nav class="navbar rounded-top " id="cabecalho">
             <div class="container-fluid conteudo">
                 <div>
-                    <a href="" id="botao-menu"> <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30"
-                            fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <a href="" id="botao-menu"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                            fill="currentColor" class="bi bi-list" viewBox="0 0 15 15">
                             <path fill-rule="evenodd"
                                 d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                         </svg> </a>
                     <a class="navbar-brand" id="nome"><strong>SGQ</strong></a>
                 </div>
                 <form class="d-flex" role="search" id="pesquisa">
-                    <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search"
-                        id="campo-pesquisa">
+                    <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search" id="campo-pesquisa">
                     <button class="btn" type="submit" id="botao-pesquisa"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                             height="16" id="icone-pesquisa" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path
@@ -31,6 +30,7 @@ import { RouterLink } from "vue-router";
 </template>
 
 <style>
+
 #botao-menu svg {
     fill: #000000;
     position: relative;
@@ -43,7 +43,8 @@ import { RouterLink } from "vue-router";
 
 #nome {
     margin-left: 10px;
-    color: black;
+    color: rgb(255, 255, 255);
+	
 }
 
 #nome strong {
@@ -54,7 +55,7 @@ import { RouterLink } from "vue-router";
 
 #cabecalho {
     width: 100%;
-    background: #056cf3;
+    background: #0065fd;
     margin-top: 3px;
     border-radius: 3px;
 }
@@ -71,6 +72,7 @@ nav {
     align-items: center;
     display: flex;
     justify-content: space-between;
+	padding: 10px;
 
 }
 
@@ -90,7 +92,7 @@ nav {
 }
 
 #campo-pesquisa {
-    width: 107px;
+    width: 150px;
     vertical-align: super;
     height: 45px;
     border-radius: 5px;

@@ -8,10 +8,10 @@
   
   <style>
   .footer {
-    background-color: #f8f9fa;
+    background-color: #0065fd;
     padding: 20px 0;
     text-align: center;
-    width: 347px;
+    width: 100%;
     
   }
   </style>

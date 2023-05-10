@@ -62,7 +62,7 @@
   .product-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-self: center;
   justify-content: space-between;
   background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -71,7 +71,7 @@
   height: 300px;
   width: 100%;
   max-width: 400px;
-  margin: 20px 0px;
+  margin: 30px 14px;
 }
 
 .product-card__image {

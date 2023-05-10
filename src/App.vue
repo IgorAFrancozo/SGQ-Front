@@ -14,7 +14,7 @@ import Rodape from './components/Rodape.vue';
 
 <style scoped>
 .container{
- margin-bottom: 90px;
+ margin-bottom: 0px;
  margin-top: 0px;
 }
 </style>
