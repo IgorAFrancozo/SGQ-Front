@@ -1,3 +1,17 @@
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+	props: {
+		produto: {
+			type: Object,
+			required: true
+		}
+	},
+});
+
+</script>
+			
 <template>
 	<div class="product-container">
 		<div class="product-card">
@@ -17,19 +31,7 @@
 	</div>
 </template>
   
-<script>
-export default {
-	props: {
-		produto: {
-			type: Object,
-			required: true
-		}
-	}
-}
-</script>
-  
 <style scoped>
-
 .product-card .button {
 	position: relative;
 	height: 50px;
@@ -43,7 +45,6 @@ export default {
 	position: absolute;
 	height: 100%;
 	width: 300%;
-	left: -100%;
 	background-image: linear-gradient(135deg, #000000, #43CBFF, #000000, #43CBFF);
 	transition: all 0.4s ease;
 	border-radius: 25PX;
@@ -66,34 +67,15 @@ export default {
 	color: #fff;
 }
 
-.product-card {
-	align-items: center;
-	justify-content: center;
-	display: flex;
-	flex-direction: column;
-	align-self: center;
-	justify-content: space-between;
-	background-color: #fff;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 4px;
-	padding: 16px;
-	height: 300px;
-	width: 100%;
-	max-width: 400px;
-	margin: 30px 14px;
-}
-
 .product-card__image {
-	width: 100%;
-	height: 50%;
-	display: flex;
+	display: block;
 	align-items: center;
 	justify-content: center;
 }
 
 .product-card__image img {
-	max-width: 100%;
-	max-height: 100%;
+	max-width: 200px;
+	max-height: 200px;
 }
 
 .product-card__info {
@@ -101,8 +83,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 50%;
-	width: 100%;
+
 }
 
 .product-card__name {
@@ -120,33 +101,44 @@ export default {
 	font-size: 18px;
 	font-weight: bold;
 }
-@media (max-width: 768px) {
-  .product-container {
-    grid-template-columns: 1fr;
-  }
+
+.product-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.product-card {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	justify-content: space-between;
+	background-color: #fff;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	padding: 16px;
+	height: 270px;
+	margin: 30px 14px;
+	margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
 	.product-card {
-		max-width: 270px;
-		height: 400px;
-		margin: 16px;
+		width: calc(33.33% - 16px);
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 480px) {
 	.product-card {
-		max-width: 290px;
-		height: 400px;
-		margin: 16px;
+		width: calc(52% - 16px);
 	}
 }
 
-@media (min-width: 1280px) {
+@media (max-width: 479px) {
 	.product-card {
-		max-width: 310px;
-		height: 500px;
-		margin: 16px;
+		width: 90%;
 	}
 }
 </style>
