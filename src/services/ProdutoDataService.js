@@ -47,4 +47,12 @@ export default {
       throw error;
     }
   },
+  excluirProduto: async (id) => {
+    try {
+      await http.delete(`produtos/${id}`);
+    } catch (error) {
+      console.error("Erro ao excluir o produto:", error);
+      throw error;
+    }
+  },
 };

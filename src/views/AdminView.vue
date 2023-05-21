@@ -44,8 +44,15 @@ export default defineComponent({
             router.push(`/admin/editar/${produto.id}`);
         };
 
-        const excluirProduto = (produtoId) => {
-            // Lógica para excluir o produto
+        const excluirProduto = async (produtoId) => {
+            try {
+                await Produto.excluirProduto(produtoId);
+                alert("Produto excluído com sucesso!");
+                // Recarregar a lista de produtos após excluir
+                await carregarProdutos();
+            } catch (error) {
+                console.error("Erro ao excluir o produto:", error);
+            }
         };
 
         onMounted(carregarProdutos);
