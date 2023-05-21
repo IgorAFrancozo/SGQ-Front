@@ -39,10 +39,10 @@ export default {
     },
     methods: {
         editarProduto(produto) {
-            // Lógica para editar um produto
+            // Fazer
         },
         excluirProduto(produtoId) {
-            // Lógica para excluir um produto
+            // Fazer
         }
     },
     created() {
