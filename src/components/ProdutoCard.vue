@@ -21,6 +21,7 @@ export default defineComponent({
 			<div class="product-card__info">
 				<h2 class="product-card__name">{{ produto.nome }}</h2>
 				<p class="product-card__description">{{ produto.descricao }}</p>
+				<p class="product-card__color">{{ produto.cor }}</p>
 				<p class="product-card__price">R$ {{ produto.valor }}</p>
 			</div>
 			<div class="button">

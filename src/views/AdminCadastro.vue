@@ -36,7 +36,7 @@
         <button type="submit">Cadastrar</button>
     </form>
 </template>
-
+  
 <script>
 import { defineComponent, ref } from 'vue';
 import produtoDataService from '@/services/produtoDataService.js';
@@ -67,7 +67,7 @@ export default defineComponent({
                 // Chama o método salvarProduto do serviço de dados do produto
                 await produtoDataService.salvarProduto(produto);
 
-             
+
             } catch (error) {
                 alert('Erro: ' + error)
                 console.error('Erro ao cadastrar o produto:', error);
@@ -95,8 +95,8 @@ export default defineComponent({
         };
     }
 });
-
 </script>
+  
 
 <style>
 form {

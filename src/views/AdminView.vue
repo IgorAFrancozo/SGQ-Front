@@ -14,7 +14,7 @@
                 <p class="text">Tamanho: {{ produto.tamanho }}</p>
                 <p class="text">Valor: {{ produto.valor }}</p>
                 <p class="text">Quantidade: {{ produto.quantidade }}</p>
-                <button class="btn btn-primary mr-2" @click="editarProduto(produto)">Editar</button>
+                <button class="btn btn-primary" @click="editarProduto(produto)">Editar</button>
                 <button class="btn btn-danger" @click="excluirProduto(produto.id)">Excluir</button>
             </div>
         </div>
@@ -22,45 +22,48 @@
 </template>
   
 <script>
-import { RouterLink } from 'vue-router';
+import { defineComponent, ref, onMounted } from 'vue';
+import { useRouter, RouterLink } from 'vue-router';
 import Produto from '../services/ProdutoDataService';
 
-export default {
-    data() {
+export default defineComponent({
+    setup() {
+        const router = useRouter();
+        const produtos = ref([]);
+
+        const carregarProdutos = async () => {
+            try {
+                const resposta = await Produto.listarProdutos();
+                produtos.value = resposta.content;
+            } catch (error) {
+                console.error('Erro ao carregar produtos:', error);
+            }
+        };
+
+        const editarProduto = (produto) => {
+            router.push(`/admin/editar/${produto.id}`);
+        };
+
+        const excluirProduto = (produtoId) => {
+            // Lógica para excluir o produto
+        };
+
+        onMounted(carregarProdutos);
+
         return {
-            produtos: [],
+            produtos,
+            editarProduto,
+            excluirProduto,
         };
     },
-    mounted() {
-        Produto.listarProdutos().then(resposta => {
-            console.log(resposta.content);
-            this.produtos = resposta.content;
-        });
-    },
-    methods: {
-        editarProduto(produto) {
-            // Fazer
-        },
-        excluirProduto(produtoId) {
-            // Fazer
-        }
-    },
-    created() {
-        // Carregar a lista de produtos do backend
-        this.carregarProdutos();
-    },
-    methods: {
-        carregarProdutos() {
-            // Lógica para carregar a lista de produtos do backend
-        }
-    }
-};
-</script> 
+});
+</script>
 
 <style scoped>
-.text{
+.text {
     margin: 7px;
 }
+
 .form-style {
     justify-content: start;
     background-color: #f8f8f8;
@@ -74,10 +77,12 @@ export default {
     display: flex;
     justify-content: flex-start;
 }
-.btn{
-    position:relative;
+
+.btn {
+    position: relative;
     margin-left: 7px;
 }
+
 .btn-primary {
     background-color: #007bff;
     color: #ffffff;
