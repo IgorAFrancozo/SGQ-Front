@@ -1,10 +1,6 @@
 <template>
     <form v-on:submit="editarProduto">
-        <div class="product-form">
-            <label for="id">ID:</label>
-            <input type="number" id="id" name="id" required v-model="produto.id">
-        </div>
-        <div class="product-form">
+	        <div class="product-form">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required v-model="produto.nome">
         </div>
