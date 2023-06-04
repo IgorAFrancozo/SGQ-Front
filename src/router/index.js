@@ -14,14 +14,24 @@ const router = createRouter({
       component: () => import("../views/AdminView.vue"),
     },
     {
-      path: "/admin/cadastrar",
-      name: "adminCadastro",
+      path: "/admin/cadastrarProduto",
+      name: "adminCadastroProduto",
       component: () => import("../views/AdminCadastro.vue"),
     },
     {
-      path: "/admin/editar/:id",
-      name: "adminEditar",
+      path: "/admin/cadastrarAdmin",
+      name: "adminCadastrarAdmin",
+      component: () => import("../views/AdminCadastroAdmin.vue"),
+    },
+    {
+      path: "/admin/editar/produto/:id",
+      name: "adminEditarProduto",
       component: () => import("../views/EditCadastro.vue"),
+    },
+    {
+      path: "/admin/editar/admin/:id",
+      name: "adminEditarAdmin",
+      component: () => import("../views/EditCadastroAdmin.vue"),
     },
   ],
 });

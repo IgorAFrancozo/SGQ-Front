@@ -1,11 +1,14 @@
 <template>
     <div class="container">
-        <h2>Administração</h2>
+        <h2>Administração:</h2>
         <br />
-        <router-link to="/admin/cadastrar" id="nomeBranco" class="nav-link active">
+        <router-link to="/admin/cadastrarProduto" id="nomeBranco" class="nav-link active">
             <button class="btn btn-primary">Adicionar Produto</button>
         </router-link>
         <br />
+        <router-link to="/admin/cadastrarAdmin" id="nomeBranco" class="nav-link active">
+            <button class="btn btn-primary">Adicionar Novo Admin</button>
+        </router-link>
 
         <div class="form-style" v-for="produto in produtos" :key="produto.id">
             <div class="form-actions">
@@ -19,50 +22,89 @@
             </div>
         </div>
     </div>
+    <div class="form-style" v-for="admin in admins" :key="admin.id">
+        <div class="form-actions">
+            <h5 class="text">Nome: {{ admin.nome }}</h5>
+            <p class="text">Email: {{ admin.email }}</p>
+            <p class="password">Senha: {{ admin.senha }}</p>
+            <button class="btn btn-primary" @click="editarAdmin(admin)">Editar</button>
+            <button class="btn btn-danger" @click="excluirAdmin(admin.id)">Excluir</button>
+        </div>
+    </div>
 </template>
   
 <script>
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter, RouterLink } from 'vue-router';
 import Produto from '../services/ProdutoDataService';
+import Admin from '../services/AdminDataService';
 
 export default defineComponent({
-    setup() {
-        const router = useRouter();
-        const produtos = ref([]);
+  setup() {
+    const router = useRouter();
+    const produtos = ref([]);
+    const admins = ref([]);
 
-        const carregarProdutos = async () => {
-            try {
-                const resposta = await Produto.listarProdutos();
-                produtos.value = resposta.content;
-            } catch (error) {
-                console.error('Erro ao carregar produtos:', error);
-            }
-        };
+    const carregarProdutos = async () => {
+      try {
+        const resposta = await Produto.listarProdutos();
+        produtos.value = resposta.content;
+      } catch (error) {
+        console.error('Erro ao carregar produtos:', error);
+      }
+    };
 
-        const editarProduto = (produto) => {
-            router.push(`/admin/editar/${produto.id}`);
-        };
+    const carregarAdmins = async () => {
+      try {
+        const resposta = await Admin.listarAdmins();
+        admins.value = resposta.content;
+      } catch (error) {
+        console.error('Erro ao carregar admins:', error);
+      }
+    };
 
-        const excluirProduto = async (produtoId) => {
-            try {
-                await Produto.excluirProduto(produtoId);
-                alert("Produto excluído com sucesso!");
-                // Recarregar a lista de produtos após excluir
-                await carregarProdutos();
-            } catch (error) {
-                console.error("Erro ao excluir o produto:", error);
-            }
-        };
+    const editarProduto = (produto) => {
+      router.push(`/admin/editar/produto/${produto.id}`);
+    };
 
-        onMounted(carregarProdutos);
+    const editarAdmin = (admin) => {
+      router.push(`/admin/editar/admin${admin.id}`);
+    };
 
-        return {
-            produtos,
-            editarProduto,
-            excluirProduto,
-        };
-    },
+    const excluirProduto = async (produtoId) => {
+      try {
+        await Produto.excluirProduto(produtoId);
+        alert("Produto excluído com sucesso!");
+        // Recarregar a lista de produtos após excluir
+        await carregarProdutos();
+      } catch (error) {
+        console.error("Erro ao excluir o produto:", error);
+      }
+    };
+
+    const excluirAdmin = async (adminId) => {
+      try {
+        await Admin.excluirAdmin(adminId);
+        alert("Admin excluído com sucesso!");
+        // Recarregar a lista de admins após excluir
+        await carregarAdmins();
+      } catch (error) {
+        console.error("Erro ao excluir o admin:", error);
+      }
+    };
+
+    onMounted(carregarProdutos);
+    onMounted(carregarAdmins);
+
+    return {
+      produtos,
+      admins,
+      editarProduto,
+      excluirProduto,
+      editarAdmin,
+      excluirAdmin,
+    };
+  },
 });
 </script>
 
