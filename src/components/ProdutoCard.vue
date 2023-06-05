@@ -27,6 +27,7 @@ export default defineComponent({
 			<div class="button">
 				<div class="button-layer"></div>
 				<button>Experimentar</button>
+				<br/>
 			</div>
 		</div>
 	</div>
