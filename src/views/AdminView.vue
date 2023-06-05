@@ -5,6 +5,9 @@
 		<router-link to="/admin/cadastrar" id="nomeBranco" class="nav-link active">
 			<button class="btn btn-primary">Adicionar Produto</button>
 		</router-link>
+		<router-link to="/admin/cadastroAdm" id="nomeBranco" class="nav-link active">
+			<button class="btn btn-primary">Adicionar Admin</button>
+		</router-link>
 		<br />
 		<h3>Produtos Ativos</h3>
 		<div class="form-style" v-for="produto in produtos" :key="produto.id">
@@ -30,78 +33,151 @@
 				<button class="btn btn-danger" @click="reativarProduto(produto.id)">Reativar</button>
 			</div>
 		</div>
+		<br />
+
+		<h3>Admins Ativos</h3>
+		<div class="form-style" v-for="admin in admins" :key="admin.id">
+			<div class="form-actions">
+				<h5 class="text">Nome: {{ admin.nome }}</h5>
+				<p class="text">Login: {{ admin.login }}</p>
+				<button class="btn btn-primary" @click="editarAdmin(admin)">Editar</button>
+				<button class="btn btn-danger" @click="excluirAdmin(admin.id)">Excluir</button>
+			</div>
+		</div>
+
+		<br />
+		<h3>Admins Inativos</h3>
+		<div class="form-style" v-for="admin in adminsInativos" :key="admin.id">
+			<div class="form-actions">
+				<h5 class="text">Nome: {{ admin.nome }}</h5>
+				<p class="text">Login: {{ admin.login }}</p>
+				<button class="btn btn-danger" @click="reativarAdmin(admin.id)">Reativar</button>
+			</div>
+		</div>
 
 	</div>
 </template>
   
 <script>
-import { defineComponent, ref, onMounted } from 'vue';
-import { useRouter, RouterLink } from 'vue-router';
-import Produto from '../services/ProdutoDataService';
+import { defineComponent, ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import Produto from "../services/ProdutoDataService";
+import AdminService from "@/services/adminDataService.js";
 
 export default defineComponent({
-	setup() {
-		const router = useRouter();
-		const produtos = ref([]);
-		const produtosInativos = ref([]);
+  setup() {
+    const router = useRouter();
+    const produtos = ref([]);
+    const produtosInativos = ref([]);
+    const admins = ref([]);
+    const adminsInativos = ref([]);
 
-		const carregarProdutos = async () => {
-			try {
-				const resposta = await Produto.listarProdutos();
-				produtos.value = resposta.content;
-			} catch (error) {
-				console.error('Erro ao carregar produtos:', error);
-			}
-		};
+    const carregarProdutos = async () => {
+      try {
+        const resposta = await Produto.listarProdutos();
+        produtos.value = resposta.content;
+      } catch (error) {
+        console.error("Erro ao carregar produtos:", error);
+      }
+    };
 
-		const carregarProdutosInativos = async () => {
-			try {
-				const respostaInativos = await Produto.listarProdutosInativos();
-				produtosInativos.value = respostaInativos.content;
-			} catch (error) {
-				console.error('Erro ao carregar produtos inativos:', error);
-			}
-		};
+    const carregarProdutosInativos = async () => {
+      try {
+        const respostaInativos = await Produto.listarProdutosInativos();
+        produtosInativos.value = respostaInativos.content;
+      } catch (error) {
+        console.error("Erro ao carregar produtos inativos:", error);
+      }
+    };
 
-		const editarProduto = (produto) => {
-			router.push(`/admin/editar/${produto.id}`);
-		};
+    const editarProduto = (produto) => {
+      router.push(`/admin/editar/${produto.id}`);
+    };
 
-		const excluirProduto = async (produtoId) => {
-			try {
-				await Produto.excluirProduto(produtoId);
-				alert("Produto excluído com sucesso!");
-				// Recarregar a lista de produtos após excluir
-				await carregarProdutos();
-			} catch (error) {
-				console.error("Erro ao excluir o produto:", error);
-			}
-		};
+    const excluirProduto = async (produtoId) => {
+      try {
+        await Produto.excluirProduto(produtoId);
+        alert("Produto excluído com sucesso!");
+        // Recarregar a lista de produtos após excluir
+        await carregarProdutos();
+      } catch (error) {
+        console.error("Erro ao excluir o produto:", error);
+      }
+    };
 
-		const reativarProduto = async (produtoId) => {
-			try {
-				await Produto.reativarProduto(produtoId);
-				alert("Produto reativado com sucesso!");
-				// Recarregar a lista de produtos após reativar
-				await carregarProdutos();
-			} catch (error) {
-				console.error("Erro ao excluir o produto:", error);
-			}
-		};
+    const reativarProduto = async (produtoId) => {
+      try {
+        await Produto.reativarProduto(produtoId);
+        alert("Produto reativado com sucesso!");
+        // Recarregar a lista de produtos após reativar
+        await carregarProdutos();
+      } catch (error) {
+        console.error("Erro ao excluir o produto:", error);
+      }
+    };
 
-		onMounted(async () => {
-			await carregarProdutos();
-			await carregarProdutosInativos();
-		});
+    const carregarAdmins = async () => {
+      try {
+        const resposta = await AdminService.listarAdmins();
+        admins.value = resposta.content;
+      } catch (error) {
+        console.error("Erro ao carregar admins:", error);
+      }
+    };
 
-		return {
-			produtos,
-			produtosInativos,
-			reativarProduto,
-			editarProduto,
-			excluirProduto,
-		};
-	},
+    const carregarAdminsInativos = async () => {
+      try {
+        const respostaInativos = await AdminService.listarAdminsInativos();
+        adminsInativos.value = respostaInativos.content;
+      } catch (error) {
+        console.error("Erro ao carregar admins inativos:", error);
+      }
+    };
+
+    const editarAdmin = (admin) => {
+      router.push(`/admin/admEdit/${admin.id}`);
+    };
+
+    const excluirAdmin = async (adminId) => {
+      try {
+        await AdminService.excluirAdmin(adminId);
+        alert("Admin excluído com sucesso!");
+        await carregarAdmins();
+      } catch (error) {
+        console.error("Erro ao excluir o admin:", error);
+      }
+    };
+
+    const reativarAdmin = async (adminId) => {
+      try {
+        await AdminService.reativarAdmin(adminId);
+        alert("Admin reativado com sucesso!");
+        await carregarAdmins();
+      } catch (error) {
+        console.error("Erro ao reativar o admin:", error);
+      }
+    };
+
+    onMounted(async () => {
+      await carregarProdutos();
+      await carregarProdutosInativos();
+      await carregarAdmins();
+      await carregarAdminsInativos();
+    });
+
+    return {
+      produtos,
+      produtosInativos,
+      admins,
+      adminsInativos,
+      reativarProduto,
+      editarProduto,
+      excluirProduto,
+      editarAdmin,
+      excluirAdmin,
+      reativarAdmin,
+    };
+  },
 });
 </script>
 
