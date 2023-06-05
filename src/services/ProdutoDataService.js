@@ -5,6 +5,7 @@ const http = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  timeout: 7000,
 });
 
 export default {
@@ -38,15 +39,6 @@ export default {
     }
   },
 
-  obterProduto: async (id) => {
-    try {
-      const resposta = await http.get(`produtos/${id}`);
-      return resposta.data;
-    } catch (error) {
-      console.error("Erro ao obter o produto:", error);
-      throw error;
-    }
-  },
   excluirProduto: async (id) => {
     try {
       await http.delete(`produtos/${id}`);

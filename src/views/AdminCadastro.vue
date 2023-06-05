@@ -39,7 +39,9 @@
   
 <script>
 import { defineComponent, ref } from 'vue';
-import produtoDataService from '@/services/produtoDataService.js';
+import produtoDataService from '../services/ProdutoDataService';
+
+
 export default defineComponent({
     setup() {
         const cadastrarProduto = async () => {
