@@ -58,20 +58,6 @@ export default {
         }
     },
 
-    // salvarProduto: async (produto) => {
-    //     try {
-    //         const produtoComImagemBase64 = {
-    //             ...produto,
-    //             imagem: produto.imagem.split(",")[1], // Obtém apenas o conteúdo em base64, excluindo o prefixo "data:image/jpeg;base64,"
-    //         };
-    //         const resposta = await http.post("produtos", produtoComImagemBase64);
-    //         console.log(resposta);
-    //         return alert("Produto cadastrado com sucesso!");
-    //     } catch (error) {
-    //         console.error("Erro ao cadastrar o produto:", error);
-    //         throw error;
-    //     }
-    // },
     salvarProduto: async (produto) => {
 		try {
 			const resposta = await http.post("produtos", produto);

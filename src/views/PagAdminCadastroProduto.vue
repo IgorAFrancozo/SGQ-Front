@@ -67,8 +67,7 @@ export default defineComponent({
           reader.onload = () => {
             try {
               const base64Image = reader.result;
-              console.log(base64Image);
-              alert('Imagem convertida para base64: ' + base64Image);
+              console.log("Imagem convertida: " + base64Image);
               imagemRef.value = base64Image;
             } catch (error) {
               console.error('Erro ao tratar a imagem:', error);
