@@ -2,27 +2,27 @@
   <form v-on:submit="cadastrarProduto" method="POST" enctype="multipart/form-data">
     <div class="product-form">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" required v-model="nomeRef">
+      <input type="text" id="nome" name="nome" required placeholder="Ex: Tênis Nike" v-model="nomeRef">
     </div>
     <div>
       <label for="descricao">Descrição:</label>
-      <textarea id="descricao" name="descricao" required v-model="descricaoRef"></textarea>
+      <textarea id="descricao" name="descricao" required placeholder="Diga como é esse produto" v-model="descricaoRef"></textarea>
     </div>
     <div>
       <label for="cor">Cor:</label>
-      <input type="text" id="cor" name="cor" required v-model="corRef">
+      <input type="text" id="cor" name="cor" required placeholder="Ex: Azul" v-model="corRef">
     </div>
     <div>
       <label for="tamanho">Tamanho:</label>
-      <input type="text" id="tamanho" name="tamanho" required v-model="tamanhoRef">
+      <input type="text" id="tamanho" name="tamanho" required placeholder="Ex: 28" v-model="tamanhoRef">
     </div>
     <div>
       <label for="quantidade">Quantidade:</label>
-      <input type="number" id="quantidade" name="quantidade" min="1" required v-model="quantidadeRef">
+      <input type="number" id="quantidade" name="quantidade" min="1" required placeholder="Ex: 3" v-model="quantidadeRef">
     </div>
     <div>
       <label for="valor">Valor:</label>
-      <input type="number" id="valor" name="valor" min="1" step="0.01" required v-model="valorRef">
+      <input type="number" id="valor" name="valor" min="1" step="0.01" required placeholder="Ex: R$150,00" v-model="valorRef">
     </div>
     <div>
       <label for="categoria">Categoria:</label>
@@ -37,10 +37,10 @@
       <label for="imagem">Imagem:</label>
       <input type="file" id="imagem" name="imagem" accept="image/*" @change="tratadorImagem">
     </div>
-
     <button type="submit">Cadastrar</button>
   </form>
 </template>
+
 
 <script>
 import {defineComponent, ref} from 'vue';

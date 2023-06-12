@@ -33,7 +33,7 @@
                 <option value="ROUPAS">Roupas</option>
             </select>
         </div>
-        <button type="submit">Editar</button>
+        <button type="submit">Atualizar</button>
     </form>
 </template>
 
