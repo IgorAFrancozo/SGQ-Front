@@ -1,9 +1,11 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: "http://localhost:8080/", headers: {
+    baseURL: "http://localhost:8080/",
+    headers: {
         "Content-Type": "application/json",
-    }, timeout: 7000,
+    },
+    timeout: 7000,
 });
 
 export default {
@@ -39,7 +41,7 @@ export default {
 
     editarProduto: async (id, produto) => {
         try {
-            const resposta = await http.put("produtos", produto);
+            const resposta = await http.put(`produtos/${id}`, produto);
             console.log(resposta);
             return alert("Produto atualizado com sucesso!");
         } catch (error) {
@@ -52,6 +54,21 @@ export default {
             await http.delete(`produtos/${id}`);
         } catch (error) {
             console.error("Erro ao excluir o produto:", error);
+            throw error;
+        }
+    },
+
+    salvarProduto: async (produto) => {
+        try {
+            const produtoComImagemBase64 = {
+                ...produto,
+                imagem: produto.imagem.split(",")[1], // Obtém apenas o conteúdo em base64, excluindo o prefixo "data:image/jpeg;base64,"
+            };
+            const resposta = await http.post("produtos", produtoComImagemBase64);
+            console.log(resposta);
+            return alert("Produto cadastrado com sucesso!");
+        } catch (error) {
+            console.error("Erro ao cadastrar o produto:", error);
             throw error;
         }
     },
