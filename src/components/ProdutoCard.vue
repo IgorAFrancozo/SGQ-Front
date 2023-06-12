@@ -6,8 +6,8 @@
 			</div>
 			<div class="product-card__info">
 				<h2 class="product-card__name">{{ produto.nome }}</h2>
-				<p class="product-card__description">{{ produto.descricao }}</p>
-				<p class="product-card__color">{{ produto.cor }}</p>
+				<p class="product-card__description">Descrição: {{ produto.descricao }}</p>
+				<p class="product-card__color">Cor: {{ produto.cor }}</p>
 				<div class="product-card__bottom">
 					<div class="product-card__price">R$ {{ produto.valor }}</div>
 					<div class="button">
@@ -24,12 +24,12 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    props: {
-        produto: {
-            type: Object,
-            required: true
-        }
-    },
+	props: {
+		produto: {
+			type: Object,
+			required: true
+		}
+	},
 });
 
 </script>
@@ -44,7 +44,7 @@ export default defineComponent({
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 4px;
 	padding: 16px;
-	height: 270px;
+	height: 190px;
 	margin: 30px 14px;
 	margin-bottom: 30px;
 }
@@ -63,6 +63,7 @@ export default defineComponent({
 
 .product-card__info {
 	display: flex;
+	margin-left: 40px;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
@@ -71,6 +72,7 @@ export default defineComponent({
 
 .product-card__name {
 	font-size: 18px;
+	margin-top: 2px;
 	font-weight: bold;
 	margin-bottom: 8px;
 }
@@ -88,7 +90,7 @@ export default defineComponent({
 .product-card__bottom {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: flex-start;
 	width: 100%;
 	margin-top: -10px; /* Ajusta o posicionamento do valor */
@@ -97,17 +99,19 @@ export default defineComponent({
 .product-card__price {
 	font-size: 18px;
 	font-weight: bold;
-	margin-bottom: 8px;
-	margin-top: -10px; /* Ajusta o posicionamento do valor */
+	margin-bottom: 54px; /* Diminui o espaçamento inferior do valor */
+	margin-right: -6px; /* Ajusta o posicionamento do botão */
+	margin-top: -86px; /* Ajusta o posicionamento do valor */
 }
 
 .button {
 	position: relative;
-	height: 50px;
-	width: 200px;
-	border-radius: 25px;
+	height: 37px; /* Ajusta a altura do botão */
+	width: 170px; /* Ajusta a largura do botão */
+	border-radius: 20px; /* Ajusta o raio do botão */
 	overflow: hidden;
-	margin-top: -10px; /* Ajusta o posicionamento do botão */
+	margin-top: 8px; /* Ajusta o espaçamento superior do botão */
+	margin-right: -10px; /* Ajusta o posicionamento do botão */
 }
 
 .button .button-layer {
@@ -116,7 +120,7 @@ export default defineComponent({
 	width: 300%;
 	background-image: linear-gradient(135deg, #000000, #43CBFF, #000000, #43CBFF);
 	transition: all 0.4s ease;
-	border-radius: 25px;
+	border-radius: 20px; /* Ajusta o raio do botão */
 }
 
 .button:hover .button-layer {
@@ -130,7 +134,7 @@ export default defineComponent({
 	background: none;
 	outline: none;
 	border: none;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 600;
 	letter-spacing: 1px;
 	color: #fff;
