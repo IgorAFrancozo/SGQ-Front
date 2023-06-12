@@ -2,12 +2,14 @@
 	<div class="container">
 		<h2>Administração</h2>
 		<br />
-		<router-link to="/admin/cadastrar" id="nomeBranco" class="nav-link active">
-			<button class="btn btn-primary">Adicionar Produto</button>
-		</router-link>
-		<router-link to="/admin/cadastroAdm" id="nomeBranco" class="nav-link active">
-			<button class="btn btn-primary">Adicionar Admin</button>
-		</router-link>
+		<div class="btn-container">
+			<router-link to="/admin/cadastrar" id="nomeBranco" class="nav-link active">
+				<button class="add-button">Adicionar Produto</button>
+			</router-link>
+			<router-link to="/admin/cadastroAdm" id="nomeBranco" class="nav-link active">
+				<button class="add-button">Adicionar Admin</button>
+			</router-link>
+		</div>
 		<br />
 		<h3>Produtos Ativos</h3>
 		<div class="form-style" v-for="produto in produtos" :key="produto.id">
@@ -62,7 +64,7 @@
 import { defineComponent, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import Produto from "../services/ProdutoDataService";
-import AdminService from "@/services/adminDataService.js";
+import AdminService from "@/services/AdminDataService.js";
 
 export default defineComponent({
   setup() {
@@ -203,6 +205,11 @@ export default defineComponent({
 .btn {
 	position: relative;
 	margin-left: 7px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
 }
 
 .btn-primary {
@@ -215,11 +222,9 @@ export default defineComponent({
 	color: #ffffff;
 }
 
-.btn {
-	padding: 6px 12px;
-	border-radius: 4px;
-	border: none;
-	cursor: pointer;
-	font-weight: bold;
+.add-button {
+  display: flex;
+  margin-right: 10px;
 }
+
 </style>

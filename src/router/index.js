@@ -6,32 +6,32 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../views/HomeView.vue"),
+      component: () => import("../views/CatalogoHome.vue"),
     },
     {
       path: "/admin",
       name: "admin",
-      component: () => import("../views/AdminView.vue"),
+      component: () => import("../views/PagAdminHome.vue"),
     },
     {
       path: "/admin/cadastrar",
       name: "adminCadastro",
-      component: () => import("../views/AdminCadastroProduto.vue"),
+      component: () => import("../views/PagAdminCadastroProduto.vue"),
     },
     {
       path: "/admin/editar/:id",
       name: "adminEditarProduto",
-      component: () => import("../views/EditCadastro.vue"),
+      component: () => import("../views/PagAdminEditProduto.vue"),
     },
 	{
 		path: "/admin/admEdit/:id",
 		name: "adminEditarAdm",
-		component: () => import("../views/EditAdmin.vue"),
+		component: () => import("../views/PagAdminEditAdmin.vue"),
 	  },
 	{
 		path: "/admin/cadastroAdm",
 		name: "cadastroDeAdmin",
-		component: () => import("../views/CadastroDeAdmin.vue"),
+		component: () => import("../views/PagAdminCadastroAdmin.vue"),
 	  },
   ],
 });
