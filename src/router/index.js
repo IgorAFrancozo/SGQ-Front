@@ -16,7 +16,7 @@ const router = createRouter({
     {
       path: "/admin/cadastrar",
       name: "adminCadastro",
-      component: () => import("../views/AdminCadastro.vue"),
+      component: () => import("../views/AdminCadastroProduto.vue"),
     },
     {
       path: "/admin/editar/:id",

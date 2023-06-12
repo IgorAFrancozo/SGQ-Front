@@ -33,6 +33,11 @@
                 <option value="ROUPAS">Roupas</option>
             </select>
         </div>
+        <div>
+            <label for="imagem">Imagem:</label>
+            <input type="file" id="imagem" name="imagem" accept="image/*" @change="tratadorImagem">
+        </div>
+
         <button type="submit">Cadastrar</button>
     </form>
 </template>
@@ -44,6 +49,22 @@ import produtoDataService from '../services/ProdutoDataService';
 
 export default defineComponent({
     setup() {
+
+        // Cria as referências reativas para os elementos do formulário
+        const nomeRef = ref('');
+        const descricaoRef = ref('');
+        const corRef = ref('');
+        const tamanhoRef = ref('');
+        const quantidadeRef = ref(0);
+        const valorRef = ref(0);
+        const categoriaRef = ref('');
+        const imagemRef = ref(null);
+
+        const tratadorImagem = (event) => {
+            const file = event.target.files[0];
+            imagemRef.value = file;
+        };
+
         const cadastrarProduto = async () => {
             try {
                 // Obtem os dados do formulário usando o sistema de referências do Vue 3
@@ -54,6 +75,7 @@ export default defineComponent({
                 const quantidade = parseInt(quantidadeRef.value);
                 const valor = parseFloat(valorRef.value);
                 const categoria = categoriaRef.value;
+                const imagem = imagemRef.value;
 
                 // Cria um objeto com os dados do produto
                 const produto = {
@@ -63,28 +85,31 @@ export default defineComponent({
                     tamanho,
                     quantidade,
                     valor,
-                    categoria
+                    categoria,
+                    imagem
                 };
+
+                if (imagemRef.value) {
+                    // Pega o conteúdo da imagem como um array de bytes... Forma como o back-end aceita!
+                    const reader = new FileReader();
+                    await new Promise((resolve) => {
+                        reader.onloadend = () => resolve();
+                        reader.readAsArrayBuffer(imagemRef.value);
+                    });
+                    const imagemBytes = new Uint8Array(reader.result);
+
+                    // Adiciona o array de bytes à propriedade do produto
+                    produto.imagem = Array.from(imagemBytes);
+                }
 
                 // Chama o método salvarProduto do serviço de dados do produto
                 await produtoDataService.salvarProduto(produto);
-
 
             } catch (error) {
                 alert('Erro: ' + error)
                 console.error('Erro ao cadastrar o produto:', error);
             }
         };
-
-        // Cria as referências reativas para os elementos do formulário
-        const nomeRef = ref('');
-        const descricaoRef = ref('');
-        const corRef = ref('');
-        const tamanhoRef = ref('');
-        const quantidadeRef = ref(0);
-        const valorRef = ref(0);
-        const categoriaRef = ref('');
-
         return {
             cadastrarProduto,
             nomeRef,
@@ -93,7 +118,9 @@ export default defineComponent({
             tamanhoRef,
             quantidadeRef,
             valorRef,
-            categoriaRef
+            categoriaRef,
+            imagemRef,
+            tratadorImagem
         };
     }
 });

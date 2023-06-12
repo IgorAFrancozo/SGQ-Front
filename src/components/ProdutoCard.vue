@@ -16,7 +16,7 @@ export default defineComponent({
 	<div class="product-container">
 		<div class="product-card">
 			<div class="product-card__image">
-				<img :src="produto.image" alt="Imagem do produto">
+				<img :src="produto.imagem" alt="Imagem do produto">
 			</div>
 			<div class="product-card__info">
 				<h2 class="product-card__name">{{ produto.nome }}</h2>
