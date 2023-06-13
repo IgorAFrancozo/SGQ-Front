@@ -1,18 +1,20 @@
 <template>
 	<form v-on:submit="editarAdmin">
+		<h1 class="titulo">Edição de Admin:</h1>
+		<br />
 		<div class="admin-form">
 			<label for="nome">Nome:</label>
-			<input type="text" id="nome" name="nome" required v-model="nomeRef" />
+			<input type="text" id="nome" placeholder="Nome do admin" name="nome" required v-model="nomeRef" />
 		</div>
 		<div>
 			<label for="email">Login:</label>
-			<input type="text" id="email" name="login" required v-model="loginRef" />
+			<input type="text" id="email" placeholder="Email" name="login" required v-model="loginRef" />
 		</div>
 		<div>
 			<label for="senha">Senha:</label>
 			<input type="password" id="senha" name="senha" required v-model="senhaRef" />
 		</div>
-		<button type="submit">Salvar</button>
+		<button type="submit"></button>
 	</form>
 </template>
   
@@ -76,3 +78,55 @@ export default defineComponent({
 });
 </script>
   
+<style>
+form {
+	max-width: 70vw;
+	max-height: 70vh;
+	margin: 0 auto;
+	margin-bottom: 60px !important;
+
+}
+
+form div {
+	margin-bottom: 15px;
+}
+
+label {
+	display: block;
+	font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+	width: 65%;
+	padding: 5px;
+	border: 2px solid #868686; /* Adicionando a borda personalizada */
+	border-radius: 4px;
+}
+
+input[type="password"],
+textarea,
+select {
+	width: 45%;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: #136bdd;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0033be;
+}
+
+h1.titulo {
+	margin-bottom: 25px !important;
+	text-align: center;
+}
+</style>

@@ -1,5 +1,6 @@
 <template>
     <form v-on:submit="editarProduto">
+    <h1 class="titulo">Editar Produto:</h1>
         <div class="product-form">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required v-model="produto.nome">
@@ -73,7 +74,7 @@ export default defineComponent({
       try {
         await produtoDataService.editarProduto(this.produtoId, this.produto);
         alert('Produto atualizado com sucesso!');
-      } catch (error) {
+      } catch (error) { 
         console.error('Erro ao editar o produto:', error);
       }
     }
@@ -84,39 +85,43 @@ export default defineComponent({
 
 <style>
 form {
-    max-width: 70vw;
-    max-height: 70vh;
-    margin: 0 auto;
+  max-width: 70vw;
+  max-height: 70vh;
+  margin: 0 auto;
 }
 
 form div {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 label {
-    display: block;
-    font-weight: bold;
+  display: block;
+  font-weight: bold;
 }
 
 input[type="text"],
 textarea,
 select {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid #868686; /* Adicionando a borda personalizada */
+  border-radius: 4px;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #136bdd;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #136bdd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #0033be;
+  background-color: #0033be;
+}
+.titulo {
+	margin-top: 30px;
+	text-align: center;
 }
 </style>

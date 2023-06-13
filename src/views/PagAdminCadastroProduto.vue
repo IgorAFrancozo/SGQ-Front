@@ -1,5 +1,7 @@
 <template>
   <form v-on:submit="cadastrarProduto" method="POST" enctype="multipart/form-data">
+    <h1 class="titulo">Cadastro de Produto:</h1>
+		<br />
     <div class="product-form">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" required placeholder="Ex: Tênis Nike" v-model="nomeRef">
@@ -44,7 +46,7 @@
 
 <script>
 import {defineComponent, ref} from 'vue';
-import dataService from '@/services/ProdutoDataService';
+import dataService from '@/services/produtoDataService';
 
 export default defineComponent({
   setup() {
@@ -154,7 +156,7 @@ textarea,
 select {
   width: 100%;
   padding: 5px;
-  border: 1px solid #ccc;
+  border: 2px solid #868686; /* Adicionando a borda personalizada */
   border-radius: 4px;
 }
 
@@ -169,5 +171,9 @@ button {
 
 button:hover {
   background-color: #0033be;
+}
+.titulo {
+	margin-top: 30px;
+	text-align: center;
 }
 </style>

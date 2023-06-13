@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 id="catalogo">Catálogo</h2>
+    <h1 class="titulo">Catálogo:</h1>
     <br>
     <div class="product-list">
       <product-card v-for="produto in produtos" :key="produto.id" :produto="produto" />
@@ -32,8 +32,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-#catalogo {
-  margin-top: 10px;
-  margin-left: 15px;
+.titulo {
+	margin-top: 100px;
+	text-align: center;
 }
 </style>

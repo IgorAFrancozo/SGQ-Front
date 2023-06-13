@@ -1,24 +1,24 @@
 <template>
 	<div class="product-container">
-		<div class="product-card">
-			<div class="product-card__image">
-				<img :src="produto.imagem" alt="Imagem do produto">
-			</div>
-			<div class="product-card__info">
-				<h2 class="product-card__name">{{ produto.nome }}</h2>
-				<p class="product-card__description">Descrição: {{ produto.descricao }}</p>
-				<p class="product-card__color">Cor: {{ produto.cor }}</p>
-				<div class="product-card__bottom">
-					<div class="product-card__price">R$ {{ produto.valor }}</div>
-					<div class="button">
-						<div class="button-layer"></div>
-						<button>Experimentar</button>
-					</div>
-				</div>
-			</div>
+	  <div class="product-card bordered">
+		<div class="product-card__image">
+		  <img :src="produto.imagem" alt="Imagem do produto">
 		</div>
+		<div class="product-card__info">
+		  <h2 class="product-card__name">{{ produto.nome }}</h2>
+		  <p class="product-card__description">Descrição: {{ produto.descricao }}</p>
+		  <p class="product-card__color">Cor: {{ produto.cor }}</p>
+		  <div class="product-card__bottom">
+			<div class="product-card__price">R$ {{ produto.valor }}</div>
+			<div class="button">
+			  <div class="button-layer"></div>
+			  <button>Experimentar</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 	</div>
-</template>
+  </template>
 
 <script>
 import { defineComponent } from 'vue';
@@ -36,17 +36,21 @@ export default defineComponent({
 
 <style scoped>
 .product-card {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: space-between;
-	background-color: #fff;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 4px;
-	padding: 16px;
-	height: 190px;
-	margin: 30px 14px;
-	margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(134, 56, 56, 0.1);
+  border-radius: 4px;
+  padding: 16px;
+  height: 190px;
+  margin: 30px 14px;
+  margin-bottom: 30px;
+}
+
+.bordered {
+  border: 2px solid #868686;
 }
 
 .product-card__image {

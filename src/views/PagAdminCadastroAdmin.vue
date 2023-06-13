@@ -1,6 +1,7 @@
 <template>
 	<form v-on:submit="cadastrarAdmin">
-		<h2 class="title">Adicionar Admin</h2>
+		<h1 class="titulo">Cadastro de Admin:</h1>
+		<br />
 		<div class="admin-form">
 			<label for="nome">Nome:</label>
 			<input type="text" id="nome" placeholder="Nome do admin" name="nome" required v-model="nomeRef" />
@@ -59,11 +60,14 @@ export default defineComponent({
 	},
 });
 </script>
+
 <style>
 form {
 	max-width: 70vw;
 	max-height: 70vh;
 	margin: 0 auto;
+	margin-bottom: 60px !important;
+
 }
 
 form div {
@@ -75,26 +79,20 @@ label {
 	font-weight: bold;
 }
 
-.title {
-	margin-bottom: 70px;
-}
-
 input[type="text"],
+input[type="password"],
 textarea,
 select {
-	width: 45%;
+	width: 65%;
 	padding: 5px;
-	border: 1px solid #ccc;
+	border: 2px solid #868686; /* Adicionando a borda personalizada */
 	border-radius: 4px;
 }
 
 input[type="password"],
 textarea,
 select {
-	width: 35%;
-	padding: 5px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+	width: 45%;
 }
 
 button {
@@ -108,5 +106,10 @@ button {
 
 button:hover {
 	background-color: #0033be;
+}
+
+h1.titulo {
+	margin-bottom: 25px !important;
+	text-align: center;
 }
 </style>
