@@ -23,16 +23,16 @@ const router = createRouter({
       name: "adminEditarProduto",
       component: () => import("../views/PagAdminEditProduto.vue"),
     },
-	{
-		path: "/admin/admEdit/:id",
-		name: "adminEditarAdm",
-		component: () => import("../views/PagAdminEditAdmin.vue"),
-	  },
-	{
-		path: "/admin/cadastroAdm",
-		name: "cadastroDeAdmin",
-		component: () => import("../views/PagAdminCadastroAdmin.vue"),
-	  },
+    {
+      path: "/admin/admEdit/:id",
+      name: "adminEditarAdm",
+      component: () => import("../views/PagAdminEditAdmin.vue"),
+    },
+    {
+      path: "/admin/cadastroAdm",
+      name: "cadastroDeAdmin",
+      component: () => import("../views/PagAdminCadastroAdmin.vue"),
+    },
   ],
 });
 
